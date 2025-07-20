@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/server.js"
+    "start": "nodemon src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,10 @@
     "@grpc/proto-loader": "^0.7.15",
     "mongoose": "^8.16.4",
     "nanoid": "^5.1.5",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "validator": "^13.15.15"
+  },
+  "devDependencies": {
+    "@bufbuild/protoc-gen-es": "^2.6.1"
   }
 }
