@@ -3,8 +3,8 @@ syntax = "proto3";
 package auth;
 
 service AuthService{
-    rpc UserLogIn(UserLoginRequest) returns (UserResponse);
-    rpc UserSignUp(UserSignUpRequest) returns (UserResponse);
+    rpc UserLogIn(UserLoginRequest) returns (UserLogInResponse);
+    rpc UserSignUp(UserSignUpRequest) returns (UserSignUpResponse);
 }
 
 message Empty {}
@@ -14,8 +14,12 @@ message UserLoginRequest {
     string password = 2;
 }
 
-message UserResponse{
+message UserSignUpResponse {
     string response = 1;
+}
+
+message UserLogInResponse{
+    string sessionId = 1;
 }
 
 message UserSignUpRequest{

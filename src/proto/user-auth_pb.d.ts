@@ -44,9 +44,9 @@ export declare type UserLoginRequest = Message<"auth.UserLoginRequest"> & {
 export declare const UserLoginRequestSchema: GenMessage<UserLoginRequest>;
 
 /**
- * @generated from message auth.UserResponse
+ * @generated from message auth.UserSignUpResponse
  */
-export declare type UserResponse = Message<"auth.UserResponse"> & {
+export declare type UserSignUpResponse = Message<"auth.UserSignUpResponse"> & {
   /**
    * @generated from field: string response = 1;
    */
@@ -54,10 +54,26 @@ export declare type UserResponse = Message<"auth.UserResponse"> & {
 };
 
 /**
- * Describes the message auth.UserResponse.
- * Use `create(UserResponseSchema)` to create a new message.
+ * Describes the message auth.UserSignUpResponse.
+ * Use `create(UserSignUpResponseSchema)` to create a new message.
  */
-export declare const UserResponseSchema: GenMessage<UserResponse>;
+export declare const UserSignUpResponseSchema: GenMessage<UserSignUpResponse>;
+
+/**
+ * @generated from message auth.UserLogInResponse
+ */
+export declare type UserLogInResponse = Message<"auth.UserLogInResponse"> & {
+  /**
+   * @generated from field: string sessionId = 1;
+   */
+  sessionId: string;
+};
+
+/**
+ * Describes the message auth.UserLogInResponse.
+ * Use `create(UserLogInResponseSchema)` to create a new message.
+ */
+export declare const UserLogInResponseSchema: GenMessage<UserLogInResponse>;
 
 /**
  * @generated from message auth.UserSignUpRequest
@@ -91,24 +107,24 @@ export declare type UserSignUpRequest = Message<"auth.UserSignUpRequest"> & {
 export declare const UserSignUpRequestSchema: GenMessage<UserSignUpRequest>;
 
 /**
- * @generated from service auth.authService
+ * @generated from service auth.AuthService
  */
-export declare const authService: GenService<{
+export declare const AuthService: GenService<{
   /**
-   * @generated from rpc auth.authService.UserLogIn
+   * @generated from rpc auth.AuthService.UserLogIn
    */
   userLogIn: {
     methodKind: "unary";
     input: typeof UserLoginRequestSchema;
-    output: typeof UserResponseSchema;
+    output: typeof UserLogInResponseSchema;
   },
   /**
-   * @generated from rpc auth.authService.UserSignUp
+   * @generated from rpc auth.AuthService.UserSignUp
    */
   userSignUp: {
     methodKind: "unary";
     input: typeof UserSignUpRequestSchema;
-    output: typeof UserResponseSchema;
+    output: typeof UserSignUpResponseSchema;
   },
 }>;
 
