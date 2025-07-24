@@ -69,19 +69,28 @@ const hashPassword = async (password, salt) => {
     }
 }
 
+const isUserExist = async ({ emailId }) => {
+    const isUser = await userModel.findOne({ emailId })
+    if (!isUser) {
+        return false
+    }
+
+    return isUser
+}
+
 const registerUser = async (userInfo) => {
 
     const { firstName, lastName, emailId, password } = userInfo
 
-    const isUserExist = await userModel.findOne({ emailId })
-    if (isUserExist) {
+    const isUser = await isUserExist({ emailId })
+    if (isUser) {
         return 'User with this email already exist!!!'
     }
 
     const salt = nanoid()
     const encryptedPassword = await hashPassword(password, salt)
 
-    const newUser = await userModel.create({ firstName, lastName, emailId, password: encryptedPassword })
+    const newUser = await userModel.create({ firstName, lastName, emailId, password: encryptedPassword, salt })
     if (!newUser) {
         throw new Error(`Error while creating the user `)
     }
@@ -89,7 +98,21 @@ const registerUser = async (userInfo) => {
     return 'You are registered successfully!!!'
 }
 
+const authenticateUser = async ({ emailId, password }) => {
+
+    const user = await isUserExist({ emailId })
+    if (!user) {
+        throw new Error("User is not registered on this website!!!")
+    }
+
+    if (!hashPassword(password, user.salt) === user.password) {
+        throw new Error('Invalid Username or password')
+    }
+
+    return user
+}
 
 export const userDomain = {
-    registerUser
+    registerUser,
+    authenticateUser
 }
