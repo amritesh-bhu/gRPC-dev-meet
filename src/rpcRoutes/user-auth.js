@@ -17,7 +17,6 @@ export const userSignUp = async (call, callback) => {
 
 export const userLogin = async (call, callback) => {
     try {
-        console.log(call)
         const { emailId, password } = call.request
         const user = await userDomain.authenticateUser({ emailId, password })
         if (!user) {
