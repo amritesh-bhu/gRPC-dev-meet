@@ -20,7 +20,8 @@ const authProto = grpc.loadPackageDefinition(packageDefinition).auth;
 const server = new grpc.Server()
 
 server.addService(authProto.AuthService.service, {
-    UserSignUp: rpcAuth.userSignUp
+    UserSignUp: rpcAuth.userSignUp,
+    UserLogIn: rpcAuth.userLogin
 })
 
 server.bindAsync(`0.0.0.0:${HTTP_PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {
