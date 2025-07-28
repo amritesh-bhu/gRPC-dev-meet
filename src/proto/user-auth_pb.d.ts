@@ -23,59 +23,6 @@ export declare type Empty = Message<"auth.Empty"> & {
 export declare const EmptySchema: GenMessage<Empty>;
 
 /**
- * @generated from message auth.UserLoginRequest
- */
-export declare type UserLoginRequest = Message<"auth.UserLoginRequest"> & {
-  /**
-   * @generated from field: string emailId = 1;
-   */
-  emailId: string;
-
-  /**
-   * @generated from field: string password = 2;
-   */
-  password: string;
-};
-
-/**
- * Describes the message auth.UserLoginRequest.
- * Use `create(UserLoginRequestSchema)` to create a new message.
- */
-export declare const UserLoginRequestSchema: GenMessage<UserLoginRequest>;
-
-/**
- * @generated from message auth.UserSignUpResponse
- */
-export declare type UserSignUpResponse = Message<"auth.UserSignUpResponse"> & {
-  /**
-   * @generated from field: string response = 1;
-   */
-  response: string;
-};
-
-/**
- * Describes the message auth.UserSignUpResponse.
- * Use `create(UserSignUpResponseSchema)` to create a new message.
- */
-export declare const UserSignUpResponseSchema: GenMessage<UserSignUpResponse>;
-
-/**
- * @generated from message auth.UserLogInResponse
- */
-export declare type UserLogInResponse = Message<"auth.UserLogInResponse"> & {
-  /**
-   * @generated from field: string sessionId = 1;
-   */
-  sessionId: string;
-};
-
-/**
- * Describes the message auth.UserLogInResponse.
- * Use `create(UserLogInResponseSchema)` to create a new message.
- */
-export declare const UserLogInResponseSchema: GenMessage<UserLogInResponse>;
-
-/**
  * @generated from message auth.UserSignUpRequest
  */
 export declare type UserSignUpRequest = Message<"auth.UserSignUpRequest"> & {
@@ -107,6 +54,59 @@ export declare type UserSignUpRequest = Message<"auth.UserSignUpRequest"> & {
 export declare const UserSignUpRequestSchema: GenMessage<UserSignUpRequest>;
 
 /**
+ * @generated from message auth.UserLoginRequest
+ */
+export declare type UserLoginRequest = Message<"auth.UserLoginRequest"> & {
+  /**
+   * @generated from field: string emailId = 1;
+   */
+  emailId: string;
+
+  /**
+   * @generated from field: string password = 2;
+   */
+  password: string;
+};
+
+/**
+ * Describes the message auth.UserLoginRequest.
+ * Use `create(UserLoginRequestSchema)` to create a new message.
+ */
+export declare const UserLoginRequestSchema: GenMessage<UserLoginRequest>;
+
+/**
+ * @generated from message auth.UserLogOutRequest
+ */
+export declare type UserLogOutRequest = Message<"auth.UserLogOutRequest"> & {
+  /**
+   * @generated from field: string metadata = 1;
+   */
+  metadata: string;
+};
+
+/**
+ * Describes the message auth.UserLogOutRequest.
+ * Use `create(UserLogOutRequestSchema)` to create a new message.
+ */
+export declare const UserLogOutRequestSchema: GenMessage<UserLogOutRequest>;
+
+/**
+ * @generated from message auth.UserResponse
+ */
+export declare type UserResponse = Message<"auth.UserResponse"> & {
+  /**
+   * @generated from field: string response = 1;
+   */
+  response: string;
+};
+
+/**
+ * Describes the message auth.UserResponse.
+ * Use `create(UserResponseSchema)` to create a new message.
+ */
+export declare const UserResponseSchema: GenMessage<UserResponse>;
+
+/**
  * @generated from service auth.AuthService
  */
 export declare const AuthService: GenService<{
@@ -116,7 +116,7 @@ export declare const AuthService: GenService<{
   userLogIn: {
     methodKind: "unary";
     input: typeof UserLoginRequestSchema;
-    output: typeof UserLogInResponseSchema;
+    output: typeof UserResponseSchema;
   },
   /**
    * @generated from rpc auth.AuthService.UserSignUp
@@ -124,7 +124,15 @@ export declare const AuthService: GenService<{
   userSignUp: {
     methodKind: "unary";
     input: typeof UserSignUpRequestSchema;
-    output: typeof UserSignUpResponseSchema;
+    output: typeof UserResponseSchema;
+  },
+  /**
+   * @generated from rpc auth.AuthService.UserLogOut
+   */
+  userLogOut: {
+    methodKind: "unary";
+    input: typeof UserLogOutRequestSchema;
+    output: typeof UserResponseSchema;
   },
 }>;
 

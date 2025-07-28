@@ -3,28 +3,29 @@ syntax = "proto3";
 package auth;
 
 service AuthService{
-    rpc UserLogIn(UserLoginRequest) returns (UserLogInResponse);
-    rpc UserSignUp(UserSignUpRequest) returns (UserSignUpResponse);
+    rpc UserLogIn(UserLoginRequest) returns (UserResponse);
+    rpc UserSignUp(UserSignUpRequest) returns (UserResponse);
+    rpc UserLogOut(UserLogOutRequest) returns (UserResponse);
 }
 
 message Empty {}
-
-message UserLoginRequest {
-    string emailId = 1;
-    string password = 2;
-}
-
-message UserSignUpResponse {
-    string response = 1;
-}
-
-message UserLogInResponse{
-    string sessionId = 1;
-}
 
 message UserSignUpRequest{
     string firstName = 1;
     string lastName = 2;
     string emailId = 3;
     string password = 4;
+}
+
+message UserLoginRequest {
+    string emailId = 1;
+    string password = 2;
+}
+
+message UserLogOutRequest{
+    string metadata = 1;
+}
+
+message UserResponse {
+    string response = 1;
 } 

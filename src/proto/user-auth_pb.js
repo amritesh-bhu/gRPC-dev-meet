@@ -8,7 +8,7 @@ import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2
  * Describes the file user-auth.proto.
  */
 export const file_user_auth = /*@__PURE__*/
-  fileDesc("Cg91c2VyLWF1dGgucHJvdG8SBGF1dGgiBwoFRW1wdHkiNQoQVXNlckxvZ2luUmVxdWVzdBIPCgdlbWFpbElkGAEgASgJEhAKCHBhc3N3b3JkGAIgASgJIiYKElVzZXJTaWduVXBSZXNwb25zZRIQCghyZXNwb25zZRgBIAEoCSImChFVc2VyTG9nSW5SZXNwb25zZRIRCglzZXNzaW9uSWQYASABKAkiWwoRVXNlclNpZ25VcFJlcXVlc3QSEQoJZmlyc3ROYW1lGAEgASgJEhAKCGxhc3ROYW1lGAIgASgJEg8KB2VtYWlsSWQYAyABKAkSEAoIcGFzc3dvcmQYBCABKAkyjAEKC0F1dGhTZXJ2aWNlEjwKCVVzZXJMb2dJbhIWLmF1dGguVXNlckxvZ2luUmVxdWVzdBoXLmF1dGguVXNlckxvZ0luUmVzcG9uc2USPwoKVXNlclNpZ25VcBIXLmF1dGguVXNlclNpZ25VcFJlcXVlc3QaGC5hdXRoLlVzZXJTaWduVXBSZXNwb25zZWIGcHJvdG8z");
+  fileDesc("Cg91c2VyLWF1dGgucHJvdG8SBGF1dGgiBwoFRW1wdHkiWwoRVXNlclNpZ25VcFJlcXVlc3QSEQoJZmlyc3ROYW1lGAEgASgJEhAKCGxhc3ROYW1lGAIgASgJEg8KB2VtYWlsSWQYAyABKAkSEAoIcGFzc3dvcmQYBCABKAkiNQoQVXNlckxvZ2luUmVxdWVzdBIPCgdlbWFpbElkGAEgASgJEhAKCHBhc3N3b3JkGAIgASgJIiUKEVVzZXJMb2dPdXRSZXF1ZXN0EhAKCG1ldGFkYXRhGAEgASgJIiAKDFVzZXJSZXNwb25zZRIQCghyZXNwb25zZRgBIAEoCTK8AQoLQXV0aFNlcnZpY2USNwoJVXNlckxvZ0luEhYuYXV0aC5Vc2VyTG9naW5SZXF1ZXN0GhIuYXV0aC5Vc2VyUmVzcG9uc2USOQoKVXNlclNpZ25VcBIXLmF1dGguVXNlclNpZ25VcFJlcXVlc3QaEi5hdXRoLlVzZXJSZXNwb25zZRI5CgpVc2VyTG9nT3V0EhcuYXV0aC5Vc2VyTG9nT3V0UmVxdWVzdBoSLmF1dGguVXNlclJlc3BvbnNlYgZwcm90bzM");
 
 /**
  * Describes the message auth.Empty.
@@ -18,31 +18,31 @@ export const EmptySchema = /*@__PURE__*/
   messageDesc(file_user_auth, 0);
 
 /**
- * Describes the message auth.UserLoginRequest.
- * Use `create(UserLoginRequestSchema)` to create a new message.
- */
-export const UserLoginRequestSchema = /*@__PURE__*/
-  messageDesc(file_user_auth, 1);
-
-/**
- * Describes the message auth.UserSignUpResponse.
- * Use `create(UserSignUpResponseSchema)` to create a new message.
- */
-export const UserSignUpResponseSchema = /*@__PURE__*/
-  messageDesc(file_user_auth, 2);
-
-/**
- * Describes the message auth.UserLogInResponse.
- * Use `create(UserLogInResponseSchema)` to create a new message.
- */
-export const UserLogInResponseSchema = /*@__PURE__*/
-  messageDesc(file_user_auth, 3);
-
-/**
  * Describes the message auth.UserSignUpRequest.
  * Use `create(UserSignUpRequestSchema)` to create a new message.
  */
 export const UserSignUpRequestSchema = /*@__PURE__*/
+  messageDesc(file_user_auth, 1);
+
+/**
+ * Describes the message auth.UserLoginRequest.
+ * Use `create(UserLoginRequestSchema)` to create a new message.
+ */
+export const UserLoginRequestSchema = /*@__PURE__*/
+  messageDesc(file_user_auth, 2);
+
+/**
+ * Describes the message auth.UserLogOutRequest.
+ * Use `create(UserLogOutRequestSchema)` to create a new message.
+ */
+export const UserLogOutRequestSchema = /*@__PURE__*/
+  messageDesc(file_user_auth, 3);
+
+/**
+ * Describes the message auth.UserResponse.
+ * Use `create(UserResponseSchema)` to create a new message.
+ */
+export const UserResponseSchema = /*@__PURE__*/
   messageDesc(file_user_auth, 4);
 
 /**
