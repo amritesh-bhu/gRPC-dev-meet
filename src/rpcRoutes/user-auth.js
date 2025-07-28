@@ -1,10 +1,10 @@
 import grpc from "@grpc/grpc-js"
 import { userDomain } from "../domain/user/index.js"
 import { nanoid } from "nanoid"
+import { sessions } from "../lib/session-in-memory.js"
 
 export const userSignUp = async (call, callback) => {
     try {
-
         const userInfo = call.request
         const response = await userDomain.registerUser(userInfo)
         callback(null, { response })
@@ -22,18 +22,33 @@ export const userLogin = async (call, callback) => {
         if (!user) {
             throw new Error("Something went wrong!!!")
         }
-        const sessions = new Map()
         const sessionId = nanoid(10)
         sessions.set(sessionId, { emailId, createdAt: Date.now() })
+        console.log("sessions creation while login ", sessions)
         callback(null, {
-            sessionId
+            response: sessionId
         })
     } catch (err) {
         callback({ code: grpc.status.NOT_FOUND, details: err.message })
     }
 }
 
+export const userLogOut = async (call, callback) => {
+    try {
+        sessions.delete(call.sessionId)
+        callback(null, {
+            response: "Loged out succesfully!!"
+        })
+    } catch (err) {
+        callback({
+            code: grpc.status.INTERNAL,
+            details: "Something went wrong in user logout section!!"
+        })
+    }
+}
+
 export const rpcAuth = {
     userSignUp,
-    userLogin
+    userLogin,
+    userLogOut
 } 
