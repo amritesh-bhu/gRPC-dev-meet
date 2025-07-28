@@ -3,6 +3,7 @@ import protoLoader from '@grpc/proto-loader';
 import { HTTP_PORT, MONGO_URI, PROTO_PATH } from './.secrets/env.js';
 import { dbConnection } from '../config/db-connection/db-conn.js';
 import { rpcAuth } from './rpcRoutes/user-auth.js';
+import { withAuth } from './interceptors/session-check.js';
 
 await dbConnection(MONGO_URI)
 
@@ -21,7 +22,8 @@ const server = new grpc.Server()
 
 server.addService(authProto.AuthService.service, {
     UserSignUp: rpcAuth.userSignUp,
-    UserLogIn: rpcAuth.userLogin
+    UserLogIn: rpcAuth.userLogin,
+    userLogOut: withAuth(rpcAuth.userLogOut)
 })
 
 server.bindAsync(`0.0.0.0:${HTTP_PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {
