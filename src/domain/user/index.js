@@ -112,7 +112,18 @@ const authenticateUser = async ({ emailId, password }) => {
     return user
 }
 
+const viewProfile = async ({ emailId }) => {
+
+    const user = await isUserExist({ emailId })
+    if (!user) {
+        throw new Error("Invalid user!!!")
+    }
+
+    return user
+}
+
 export const userDomain = {
     registerUser,
-    authenticateUser
-}
+    authenticateUser,
+    viewProfile
+}       
