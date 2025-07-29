@@ -1,30 +1,36 @@
 import grpc from '@grpc/grpc-js';
 import protoLoader from '@grpc/proto-loader';
-import { HTTP_PORT, MONGO_URI, PROTO_PATH } from './.secrets/env.js';
+import { AUTH_PROTO, HTTP_PORT, MONGO_URI, PROFILE_PROTO } from './.secrets/env.js';
 import { dbConnection } from '../config/db-connection/db-conn.js';
 import { rpcAuth } from './rpcRoutes/user-auth.js';
 import { withAuth } from './interceptors/session-check.js';
+import { rpcProfile } from './rpcRoutes/user-profile.js';
 
 await dbConnection(MONGO_URI)
 
-const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
+const packageDefinition = protoLoader.loadSync([AUTH_PROTO, PROFILE_PROTO], {
     keepCase: true,
     oneofs: true,
     default: true,
     longs: String,
     enums: String,
-
 })
 
-const authProto = grpc.loadPackageDefinition(packageDefinition).auth;
+const proto = grpc.loadPackageDefinition(packageDefinition);
 
 const server = new grpc.Server()
 
-server.addService(authProto.AuthService.service, {
+server.addService(proto.auth.AuthService.service, {
     UserSignUp: rpcAuth.userSignUp,
     UserLogIn: rpcAuth.userLogin,
     userLogOut: withAuth(rpcAuth.userLogOut)
 })
+
+server.addService(proto.profile.ProfileService.service, {
+    ViewProfile: withAuth(rpcProfile.viewProfile)
+})
+
+
 
 server.bindAsync(`0.0.0.0:${HTTP_PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {
     if (err) {
