@@ -1,4 +1,5 @@
 import grpc from "@grpc/grpc-js"
+import { userDomain } from "../domain/user/index.js"
 
 export const viewProfile = async (call, callback) => {
     try {
