@@ -19,6 +19,21 @@ export const viewProfile = async (call, callback) => {
     }
 }
 
+export const updateUserProfile = async (call, callback) => {
+    try {
+
+        const allowedUpdates = ['age', 'photoUrl', 'skills']
+
+        const isAllowedUpdates = Object.keys(call.request).every((key) => allowedUpdates.includes(key))
+
+        if (!isAllowedUpdates) {
+            callback({ code: grpc.status.INTERNAL, details: "Invalid updates!!!" })
+        }
+
+    } catch (err) {
+
+    }
+}
 
 export const rpcProfile = {
     viewProfile
