@@ -69,6 +69,48 @@ export declare type ViewProfileResponse = Message<"profile.ViewProfileResponse">
 export declare const ViewProfileResponseSchema: GenMessage<ViewProfileResponse>;
 
 /**
+ * @generated from message profile.UpdateProfileRequest
+ */
+export declare type UpdateProfileRequest = Message<"profile.UpdateProfileRequest"> & {
+  /**
+   * @generated from field: string age = 1;
+   */
+  age: string;
+
+  /**
+   * @generated from field: string skills = 2;
+   */
+  skills: string;
+
+  /**
+   * @generated from field: string photoUrl = 3;
+   */
+  photoUrl: string;
+};
+
+/**
+ * Describes the message profile.UpdateProfileRequest.
+ * Use `create(UpdateProfileRequestSchema)` to create a new message.
+ */
+export declare const UpdateProfileRequestSchema: GenMessage<UpdateProfileRequest>;
+
+/**
+ * @generated from message profile.UpdateProfileRespone
+ */
+export declare type UpdateProfileRespone = Message<"profile.UpdateProfileRespone"> & {
+  /**
+   * @generated from field: string response = 1;
+   */
+  response: string;
+};
+
+/**
+ * Describes the message profile.UpdateProfileRespone.
+ * Use `create(UpdateProfileResponeSchema)` to create a new message.
+ */
+export declare const UpdateProfileResponeSchema: GenMessage<UpdateProfileRespone>;
+
+/**
  * @generated from service profile.ProfileService
  */
 export declare const ProfileService: GenService<{
@@ -79,6 +121,14 @@ export declare const ProfileService: GenService<{
     methodKind: "unary";
     input: typeof EmptySchema;
     output: typeof ViewProfileResponseSchema;
+  },
+  /**
+   * @generated from rpc profile.ProfileService.UpdateProfile
+   */
+  updateProfile: {
+    methodKind: "unary";
+    input: typeof UpdateProfileRequestSchema;
+    output: typeof UpdateProfileResponeSchema;
   },
 }>;
 

@@ -4,6 +4,7 @@ package profile;
 
 service ProfileService{
     rpc ViewProfile (Empty) returns (ViewProfileResponse);
+    rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileRespone);
 }
 
 message Empty {}
@@ -16,4 +17,14 @@ message ViewProfileResponse{
     string gender = 5;
     string skills = 6;
     string photourl = 7;
+}
+
+message UpdateProfileRequest{
+    string age = 1;
+    string skills = 2;
+    string photoUrl = 3;
+}
+
+message UpdateProfileRespone{
+    string response = 1;
 }

@@ -8,7 +8,7 @@ import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2
  * Describes the file user-profile.proto.
  */
 export const file_user_profile = /*@__PURE__*/
-  fileDesc("ChJ1c2VyLXByb2ZpbGUucHJvdG8SB3Byb2ZpbGUiBwoFRW1wdHkiigEKE1ZpZXdQcm9maWxlUmVzcG9uc2USEQoJZmlyc3ROYW1lGAEgASgJEhAKCGxhc3ROYW1lGAIgASgJEg8KB2VtYWlsSWQYAyABKAkSCwoDYWdlGAQgASgFEg4KBmdlbmRlchgFIAEoCRIOCgZza2lsbHMYBiABKAkSEAoIcGhvdG91cmwYByABKAkyTQoOUHJvZmlsZVNlcnZpY2USOwoLVmlld1Byb2ZpbGUSDi5wcm9maWxlLkVtcHR5GhwucHJvZmlsZS5WaWV3UHJvZmlsZVJlc3BvbnNlYgZwcm90bzM");
+  fileDesc("ChJ1c2VyLXByb2ZpbGUucHJvdG8SB3Byb2ZpbGUiBwoFRW1wdHkiigEKE1ZpZXdQcm9maWxlUmVzcG9uc2USEQoJZmlyc3ROYW1lGAEgASgJEhAKCGxhc3ROYW1lGAIgASgJEg8KB2VtYWlsSWQYAyABKAkSCwoDYWdlGAQgASgFEg4KBmdlbmRlchgFIAEoCRIOCgZza2lsbHMYBiABKAkSEAoIcGhvdG91cmwYByABKAkiRQoUVXBkYXRlUHJvZmlsZVJlcXVlc3QSCwoDYWdlGAEgASgJEg4KBnNraWxscxgCIAEoCRIQCghwaG90b1VybBgDIAEoCSIoChRVcGRhdGVQcm9maWxlUmVzcG9uZRIQCghyZXNwb25zZRgBIAEoCTKcAQoOUHJvZmlsZVNlcnZpY2USOwoLVmlld1Byb2ZpbGUSDi5wcm9maWxlLkVtcHR5GhwucHJvZmlsZS5WaWV3UHJvZmlsZVJlc3BvbnNlEk0KDVVwZGF0ZVByb2ZpbGUSHS5wcm9maWxlLlVwZGF0ZVByb2ZpbGVSZXF1ZXN0Gh0ucHJvZmlsZS5VcGRhdGVQcm9maWxlUmVzcG9uZWIGcHJvdG8z");
 
 /**
  * Describes the message profile.Empty.
@@ -23,6 +23,20 @@ export const EmptySchema = /*@__PURE__*/
  */
 export const ViewProfileResponseSchema = /*@__PURE__*/
   messageDesc(file_user_profile, 1);
+
+/**
+ * Describes the message profile.UpdateProfileRequest.
+ * Use `create(UpdateProfileRequestSchema)` to create a new message.
+ */
+export const UpdateProfileRequestSchema = /*@__PURE__*/
+  messageDesc(file_user_profile, 2);
+
+/**
+ * Describes the message profile.UpdateProfileRespone.
+ * Use `create(UpdateProfileResponeSchema)` to create a new message.
+ */
+export const UpdateProfileResponeSchema = /*@__PURE__*/
+  messageDesc(file_user_profile, 3);
 
 /**
  * @generated from service profile.ProfileService
