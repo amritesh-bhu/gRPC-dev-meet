@@ -1,7 +1,7 @@
 import grpc from "@grpc/grpc-js"
 import { userDomain } from "../domain/user/index.js"
 
-export const viewProfile = async (call, callback) => {
+const viewProfile = async (call, callback) => {
     try {
         const { emailId } = call.session
         const user = await userDomain.viewProfile({ emailId })
@@ -19,26 +19,37 @@ export const viewProfile = async (call, callback) => {
     }
 }
 
-export const rpcUpdateUserProfile = async (call, callback) => {
+const updateUserProfile = async (call, callback) => {
     try {
 
+        const { emailId } = call.session
+        const extractExplicitFields = (updates) => {
+            const result = {}
+            for (const key in updates) {
+                if (key.startsWith('_')) continue
+                result[key] = updates[key]
+            }
+
+            return result
+        }
+
+        const explicitUpdates = extractExplicitFields(call.request)
+
         const allowedUpdates = ['age', 'photoUrl', 'skills']
-
-        const isAllowedUpdates = Object.keys(call.request).every((key) => allowedUpdates.includes(key))
-
+        const isAllowedUpdates = Object.keys(explicitUpdates).every((key) => allowedUpdates.includes(key))
         if (!isAllowedUpdates) {
             callback({ code: grpc.status.INTERNAL, details: "Invalid updates!!!" })
         }
 
-        const updates = Object.keys(call.request).map((key) => updates.key = call.request.key)
-        console.log(updates)
-
-
+        const updates = Object.fromEntries(Object.entries(explicitUpdates).filter(([_, value]) => value !== null))
+        const message = await userDomain.updateUserProfile({ updates, emailId })
+        callback(null, { success: message })
     } catch (err) {
-
+        callback({ code: grpc.status.INTERNAL, details: err.message })
     }
 }
 
 export const rpcProfile = {
-    viewProfile
-}
+    viewProfile,
+    updateUserProfile
+}   
