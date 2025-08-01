@@ -18,7 +18,7 @@ const userSessionCheck = async (call, callback, next) => {
     } catch (error) {
         callback({
             code: grpc.status.INTERNAL,
-            details: "Unauthenticated user!!"
+            details: error.message
         })
     }
 }
