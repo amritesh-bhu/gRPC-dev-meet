@@ -27,7 +27,8 @@ server.addService(proto.auth.AuthService.service, {
 })
 
 server.addService(proto.profile.ProfileService.service, {
-    ViewProfile: withAuth(rpcProfile.viewProfile)
+    ViewProfile: withAuth(rpcProfile.viewProfile),
+    UpdateProfile: withAuth(rpcProfile.updateUserProfile)
 })
 
 
