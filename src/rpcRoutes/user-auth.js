@@ -24,7 +24,6 @@ const userLogin = async (call, callback) => {
         }
         const sessionId = nanoid(10)
         sessions.set(sessionId, { emailId, createdAt: Date.now() })
-        console.log("sessions creation while login ", sessions)
         callback(null, {
             response: sessionId
         })
