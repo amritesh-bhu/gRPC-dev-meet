@@ -3,7 +3,7 @@ import { userDomain } from "../domain/user/index.js"
 import { nanoid } from "nanoid"
 import { sessions } from "../lib/session-in-memory.js"
 
-export const userSignUp = async (call, callback) => {
+const userSignUp = async (call, callback) => {
     try {
         const userInfo = call.request
         const response = await userDomain.registerUser(userInfo)
@@ -15,7 +15,7 @@ export const userSignUp = async (call, callback) => {
 
 }
 
-export const userLogin = async (call, callback) => {
+const userLogin = async (call, callback) => {
     try {
         const { emailId, password } = call.request
         const user = await userDomain.authenticateUser({ emailId, password })
@@ -33,7 +33,7 @@ export const userLogin = async (call, callback) => {
     }
 }
 
-export const userLogOut = async (call, callback) => {
+const userLogOut = async (call, callback) => {
     try {
         sessions.delete(call.sessionId)
         callback(null, {
