@@ -48,7 +48,7 @@ const userSchema = Schema({
     photoUrl: {
         type: String
     },
-    Skills: {
+    skills: {
         type: [String]
     }
 },
@@ -122,15 +122,18 @@ const viewProfile = async ({ emailId }) => {
     return user
 }
 
-const updateUserProfile = async ({ updates }) => {
+const updateUserProfile = async ({ updates, emailId }) => {
 
-    const user = await userModel.findOneAndUpdate({ _id: id }, { $set: { updates } })
-    return user
+    const user = await userModel.findOneAndUpdate({ emailId }, { $set: updates })
+    if (!user) {
+        throw new Error("Something went wrong while updating the user details!!")
+    }
+    return "Data updated successfully!!"
 }
 
 export const userDomain = {
     registerUser,
     authenticateUser,
     viewProfile,
-
+    updateUserProfile
 }       
