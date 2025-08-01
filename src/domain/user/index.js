@@ -122,8 +122,15 @@ const viewProfile = async ({ emailId }) => {
     return user
 }
 
+const updateUserProfile = async ({ updates }) => {
+
+    const user = await userModel.findOneAndUpdate({ _id: id }, { $set: { updates } })
+    return user
+}
+
 export const userDomain = {
     registerUser,
     authenticateUser,
-    viewProfile
+    viewProfile,
+
 }       
