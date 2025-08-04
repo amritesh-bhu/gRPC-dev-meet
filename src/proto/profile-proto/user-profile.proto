@@ -12,19 +12,19 @@ message Empty {}
 message ViewProfileResponse{
     string firstName = 1;
     string lastName = 2;
-    string emailId = 3;
+    string emailId = 3;     
     int32 age = 4;
     string gender = 5;
-    string skills = 6;
-    string photourl = 7;
+    repeated string skills = 6;
+    string photoUrl = 7;
 }
 
 message UpdateProfileRequest{
-    string age = 1;
-    string skills = 2;
-    string photoUrl = 3;
+    optional int32 age = 1;
+    repeated string skills = 2;
+    optional string photoUrl = 3; 
 }
 
 message UpdateProfileRespone{
-    string response = 1;
+    string success = 1;
 }

@@ -52,14 +52,14 @@ export declare type ViewProfileResponse = Message<"profile.ViewProfileResponse">
   gender: string;
 
   /**
-   * @generated from field: string skills = 6;
+   * @generated from field: repeated string skills = 6;
    */
-  skills: string;
+  skills: string[];
 
   /**
-   * @generated from field: string photourl = 7;
+   * @generated from field: string photoUrl = 7;
    */
-  photourl: string;
+  photoUrl: string;
 };
 
 /**
@@ -73,19 +73,19 @@ export declare const ViewProfileResponseSchema: GenMessage<ViewProfileResponse>;
  */
 export declare type UpdateProfileRequest = Message<"profile.UpdateProfileRequest"> & {
   /**
-   * @generated from field: string age = 1;
+   * @generated from field: optional int32 age = 1;
    */
-  age: string;
+  age?: number;
 
   /**
-   * @generated from field: string skills = 2;
+   * @generated from field: repeated string skills = 2;
    */
-  skills: string;
+  skills: string[];
 
   /**
-   * @generated from field: string photoUrl = 3;
+   * @generated from field: optional string photoUrl = 3;
    */
-  photoUrl: string;
+  photoUrl?: string;
 };
 
 /**
@@ -99,9 +99,9 @@ export declare const UpdateProfileRequestSchema: GenMessage<UpdateProfileRequest
  */
 export declare type UpdateProfileRespone = Message<"profile.UpdateProfileRespone"> & {
   /**
-   * @generated from field: string response = 1;
+   * @generated from field: string success = 1;
    */
-  response: string;
+  success: string;
 };
 
 /**
