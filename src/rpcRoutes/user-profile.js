@@ -5,15 +5,8 @@ const viewProfile = async (call, callback) => {
     try {
         const { emailId } = call.session
         const user = await userDomain.viewProfile({ emailId })
-        callback(null, {
-            firstName: user.firstName,
-            lastName: user.lastName,
-            emailId: user.emailId,
-            age: user.age,
-            gender: user.gender,
-            skills: user.skills,
-            photoUrl: user.photoUrl
-        })
+        const { firstName, lastName, age, gender, skills, photoUrl } = user
+        callback(null, { firstName, lastName, emailId, age, gender, skills, photoUrl })
     } catch (err) {
         callback({ code: grpc.status.INTERNAL, details: err.message })
     }
@@ -42,6 +35,7 @@ const updateUserProfile = async (call, callback) => {
         }
 
         const updates = Object.fromEntries(Object.entries(explicitUpdates).filter(([_, value]) => value !== null))
+        console.log("rpcLayer ", updates)
         const message = await userDomain.updateUserProfile({ updates, emailId })
         callback(null, { success: message })
     } catch (err) {
