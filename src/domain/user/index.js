@@ -69,7 +69,7 @@ const hashPassword = async (password, salt) => {
     }
 }
 
-const isUserExist = async ({ emailId }) => {
+export const isUserExist = async ({ emailId }) => {
     const isUser = await userModel.findOne({ emailId })
     if (!isUser) {
         return false
@@ -135,5 +135,6 @@ export const userDomain = {
     registerUser,
     authenticateUser,
     viewProfile,
-    updateUserProfile
+    updateUserProfile,
+    isUserExist
 }       
