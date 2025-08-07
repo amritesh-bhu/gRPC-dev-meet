@@ -28,9 +28,8 @@ export const createConnection = async ({ fromEmailId, toEmailId, status }) => {
         ]
     })
 
-    console.log(isAlreadyFriend)
     if (isAlreadyFriend) {
-        throw new Error("Already have connection!!")
+        return "connection already exist!!"
     }
 
     const newConnection = await connModel.create({ fromEmailId, toEmailId, status })
