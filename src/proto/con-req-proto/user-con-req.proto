@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package userConnReq;
+
+service ConnService{
+    rpc SendRequest(SendConection) returns (ConnectionResponse);
+}
+
+message SendConection{
+    string emailId = 1;
+    string status = 2;
+}
+
+message ConnectionResponse{
+    string success = 1;
+}
