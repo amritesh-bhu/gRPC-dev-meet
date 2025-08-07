@@ -1,6 +1,6 @@
 import grpc from "@grpc/grpc-js"
 import { userDomain } from "../domain/user/index.js"
-import { connDomain } from "../domain/user-connection/index.js"
+import { connDomain } from "../domain/user-connection/index.js  "
 
 const sendConnRequest = async (call, callback) => {
 
@@ -21,7 +21,7 @@ const sendConnRequest = async (call, callback) => {
 
         const newConnection = await connDomain.createConnection({ fromEmailId: logedInUser.emailId, toEmailId: emailId, status })
 
-        callback(null, { response: newConnection })
+        callback(null, { success: newConnection })
     } catch (error) {
         callback({ code: grpc.status.INTERNAL, details: "Something went wrong!!" })
     }
