@@ -1,11 +1,11 @@
 import grpc from "@grpc/grpc-js"
-import { userDomain } from "../domain/user"
+import { userDomain } from "../domain/user/index.js"
+import { connDomain } from "../domain/user-connection/index.js"
 
-const sendRequest = async (call, callback) => {
+const sendConnRequest = async (call, callback) => {
 
     try {
-        const logedInUserId = call.user
-
+        const logedInUser = call.user
         const { status, emailId } = call.request
 
         const isSenderExist = await userDomain.isUserExist({ emailId })
@@ -15,8 +15,19 @@ const sendRequest = async (call, callback) => {
 
         const allowedStatus = ['Interested', 'Ignored']
         const isAllowedStatus = allowedStatus.includes(status)
-        callback(null, { response: "Request Sent successfully!!" })
+        if (!isAllowedStatus) {
+            callback({ code: grpc.status.FAILED_PRECONDITION, details: "Invalid status sent!!" })
+        }
+
+        const newConnection = await connDomain.createConnection({ fromEmailId: logedInUser.emailId, toEmailId: emailId, status })
+
+        callback(null, { response: newConnection })
     } catch (error) {
         callback({ code: grpc.status.INTERNAL, details: "Something went wrong!!" })
     }
+}
+
+
+export const rpcConnection = {
+    sendConnRequest
 }
