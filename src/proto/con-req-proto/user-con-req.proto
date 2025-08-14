@@ -4,10 +4,16 @@ package userConnReq;
 
 service ConnService{
     rpc SendRequest(SendConection) returns (ConnectionResponse);
+    rpc UpdateStatus(SendStatusToUpdate) returns (ConnectionResponse);
 }
 
 message SendConection{
     string emailId = 1;
+    string status = 2;
+}
+
+message SendStatusToUpdate{
+    string id = 1;
     string status = 2;
 }
 
