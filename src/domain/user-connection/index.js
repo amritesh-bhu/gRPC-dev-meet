@@ -40,7 +40,24 @@ export const createConnection = async ({ fromEmailId, toEmailId, status }) => {
     return "connection created!!"
 }
 
+const updateConnectionStatus = async ({ logedInUserEmail, id, status }) => {
+
+    const isInterested = await connModel.findOneAndUpdate(
+        { _id: new mongoose.Types.ObjectId(id), toEmailId: logedInUserEmail, status: "Interested" }
+        , { $set: { status } }, { new: true }
+    )
+
+    console.log("isInterested", isInterested)
+
+    if (!isInterested) {
+        return "Connection does not exist!!!"
+    }
+
+    return "status updated Successfully!!"
+}
+
 
 export const connDomain = {
-    createConnection
+    createConnection,
+    updateConnectionStatus
 }
