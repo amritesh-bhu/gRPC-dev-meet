@@ -3,7 +3,7 @@ import { userDomain } from "../domain/user/index.js"
 
 const viewProfile = async (call, callback) => {
     try {
-        const { emailId } = call.session
+        const { emailId } = call.user
         const user = await userDomain.viewProfile({ emailId })
         const { firstName, lastName, age, gender, skills, photoUrl } = user
         callback(null, { firstName, lastName, emailId, age, gender, skills, photoUrl })
@@ -15,7 +15,7 @@ const viewProfile = async (call, callback) => {
 const updateUserProfile = async (call, callback) => {
     try {
 
-        const { emailId } = call.session
+        const { emailId } = call.user
         const extractExplicitFields = (updates) => {
             const result = {}
             for (const key in updates) {
