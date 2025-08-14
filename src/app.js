@@ -33,7 +33,8 @@ server.addService(proto.profile.ProfileService.service, {
 })
 
 server.addService(proto.userConnReq.ConnService.service, {
-    SendRequest: withAuth(rpcConnection.sendConnRequest)
+    SendRequest: withAuth(rpcConnection.sendConnRequest),
+    UpdateStatus: withAuth(rpcConnection.updateStatus)
 })
 
 
