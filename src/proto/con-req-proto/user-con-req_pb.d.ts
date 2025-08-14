@@ -32,6 +32,27 @@ export declare type SendConection = Message<"userConnReq.SendConection"> & {
 export declare const SendConectionSchema: GenMessage<SendConection>;
 
 /**
+ * @generated from message userConnReq.SendStatusToUpdate
+ */
+export declare type SendStatusToUpdate = Message<"userConnReq.SendStatusToUpdate"> & {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * @generated from field: string status = 2;
+   */
+  status: string;
+};
+
+/**
+ * Describes the message userConnReq.SendStatusToUpdate.
+ * Use `create(SendStatusToUpdateSchema)` to create a new message.
+ */
+export declare const SendStatusToUpdateSchema: GenMessage<SendStatusToUpdate>;
+
+/**
  * @generated from message userConnReq.ConnectionResponse
  */
 export declare type ConnectionResponse = Message<"userConnReq.ConnectionResponse"> & {
@@ -57,6 +78,14 @@ export declare const ConnService: GenService<{
   sendRequest: {
     methodKind: "unary";
     input: typeof SendConectionSchema;
+    output: typeof ConnectionResponseSchema;
+  },
+  /**
+   * @generated from rpc userConnReq.ConnService.UpdateStatus
+   */
+  updateStatus: {
+    methodKind: "unary";
+    input: typeof SendStatusToUpdateSchema;
     output: typeof ConnectionResponseSchema;
   },
 }>;
