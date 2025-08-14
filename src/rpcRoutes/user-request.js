@@ -29,6 +29,7 @@ const sendConnRequest = async (call, callback) => {
 
 const updateStatus = async (call, callback) => {
     try {
+
         const { id, status } = call.request
         const logedInUser = call.user
         const logedInUserEmail = logedInUser.emailId
@@ -40,7 +41,6 @@ const updateStatus = async (call, callback) => {
         }
 
         const response = await connDomain.updateConnectionStatus({ logedInUserEmail, id, status })
-        console.log("respone ", response)
 
         if (!response) {
             throw new Error("Something went wrong while updating status!!")

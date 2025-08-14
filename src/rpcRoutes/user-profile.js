@@ -35,7 +35,7 @@ const updateUserProfile = async (call, callback) => {
         }
 
         const updates = Object.fromEntries(Object.entries(explicitUpdates).filter(([_, value]) => value !== null))
-        console.log("rpcLayer ", updates)
+
         const message = await userDomain.updateUserProfile({ updates, emailId })
         callback(null, { success: message })
     } catch (err) {
