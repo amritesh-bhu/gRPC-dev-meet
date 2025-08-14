@@ -27,7 +27,32 @@ const sendConnRequest = async (call, callback) => {
     }
 }
 
+const updateStatus = async (call, callback) => {
+    try {
+        const { id, status } = call.request
+        const logedInUser = call.user
+        const logedInUserEmail = logedInUser.emailId
+
+        const allowedStatusUpdate = ["Accepted", "Rejected"]
+        const isValidStatus = allowedStatusUpdate.includes(status)
+        if (!isValidStatus) {
+            throw new Error("Status is not valid!!")
+        }
+
+        const response = await connDomain.updateConnectionStatus({ logedInUserEmail, id, status })
+        console.log("respone ", response)
+
+        if (!response) {
+            throw new Error("Something went wrong while updating status!!")
+        }
+
+        callback(null, { success: response })
+    } catch (error) {
+        callback({ code: grpc.status.INTERNAL, details: error.message })
+    }
+}
 
 export const rpcConnection = {
-    sendConnRequest
-}
+    sendConnRequest,
+    updateStatus
+}       
