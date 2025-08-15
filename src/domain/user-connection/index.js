@@ -4,12 +4,14 @@ const connSchema = {
     toEmailId: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        ref: "user"
     },
     fromEmailId: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        ref: "user"
     },
     status: {
         type: String,
@@ -47,8 +49,6 @@ const updateConnectionStatus = async ({ logedInUserEmail, id, status }) => {
         , { $set: { status } }, { new: true }
     )
 
-    console.log("isInterested", isInterested)
-
     if (!isInterested) {
         return "Connection does not exist!!!"
     }
@@ -56,8 +56,25 @@ const updateConnectionStatus = async ({ logedInUserEmail, id, status }) => {
     return "status updated Successfully!!"
 }
 
+const getAcceptedConnections = async ({ emailId }) => {
+
+    console.log(emailId)
+
+    const friends = await connModel.find({
+        $or: [
+            { fromEmailId: emailId },
+            { toEmailId: emailId }
+        ], status: "Accepted"
+    }).populate("fromEmailId", "firstName lastName")
+        .populate("toEmailId", "firstName lastName")
+
+    console.log("connections ", friends)
+    return connections
+}
+
 
 export const connDomain = {
     createConnection,
-    updateConnectionStatus
+    updateConnectionStatus,
+    getAcceptedConnections
 }
