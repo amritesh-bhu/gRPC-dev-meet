@@ -52,7 +52,23 @@ const updateStatus = async (call, callback) => {
     }
 }
 
+const acceptedConnections = async (call, callback) => {
+    try {
+
+        const { emailId } = call.user
+        console.log("emailid ", emailId)
+        const connections = await connDomain.getAcceptedConnections({ emailId })
+        console.log("connections rpc", connections)
+        callback(null, {
+            connections
+        })
+    } catch (error) {
+        callback({ code: grpc.status.INTERNAL, details: error })
+    }
+}
+
 export const rpcConnection = {
     sendConnRequest,
-    updateStatus
+    updateStatus,
+    acceptedConnections
 }       
