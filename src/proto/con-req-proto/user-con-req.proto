@@ -5,6 +5,15 @@ package userConnReq;
 service ConnService{
     rpc SendRequest(SendConection) returns (ConnectionResponse);
     rpc UpdateStatus(SendStatusToUpdate) returns (ConnectionResponse);
+    rpc AcceptedConnections(Empty) returns (Connections);
+}
+
+message Empty{}
+
+message Connection{
+    string firstName = 1;
+    string lastName = 2;
+    string emailId = 3; 
 }
 
 message SendConection{
@@ -19,4 +28,8 @@ message SendStatusToUpdate{
 
 message ConnectionResponse{
     string success = 1;
+}
+
+message Connections{
+    repeated Connection conn = 1;
 }

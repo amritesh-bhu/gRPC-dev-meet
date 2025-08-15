@@ -8,28 +8,49 @@ import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2
  * Describes the file user-con-req.proto.
  */
 export const file_user_con_req = /*@__PURE__*/
-  fileDesc("ChJ1c2VyLWNvbi1yZXEucHJvdG8SC3VzZXJDb25uUmVxIjAKDVNlbmRDb25lY3Rpb24SDwoHZW1haWxJZBgBIAEoCRIOCgZzdGF0dXMYAiABKAkiMAoSU2VuZFN0YXR1c1RvVXBkYXRlEgoKAmlkGAEgASgJEg4KBnN0YXR1cxgCIAEoCSIlChJDb25uZWN0aW9uUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCTKrAQoLQ29ublNlcnZpY2USSgoLU2VuZFJlcXVlc3QSGi51c2VyQ29ublJlcS5TZW5kQ29uZWN0aW9uGh8udXNlckNvbm5SZXEuQ29ubmVjdGlvblJlc3BvbnNlElAKDFVwZGF0ZVN0YXR1cxIfLnVzZXJDb25uUmVxLlNlbmRTdGF0dXNUb1VwZGF0ZRofLnVzZXJDb25uUmVxLkNvbm5lY3Rpb25SZXNwb25zZWIGcHJvdG8z");
+  fileDesc("ChJ1c2VyLWNvbi1yZXEucHJvdG8SC3VzZXJDb25uUmVxIgcKBUVtcHR5IkIKCkNvbm5lY3Rpb24SEQoJZmlyc3ROYW1lGAEgASgJEhAKCGxhc3ROYW1lGAIgASgJEg8KB2VtYWlsSWQYAyABKAkiMAoNU2VuZENvbmVjdGlvbhIPCgdlbWFpbElkGAEgASgJEg4KBnN0YXR1cxgCIAEoCSIwChJTZW5kU3RhdHVzVG9VcGRhdGUSCgoCaWQYASABKAkSDgoGc3RhdHVzGAIgASgJIiUKEkNvbm5lY3Rpb25SZXNwb25zZRIPCgdzdWNjZXNzGAEgASgJIjQKC0Nvbm5lY3Rpb25zEiUKBGNvbm4YASADKAsyFy51c2VyQ29ublJlcS5Db25uZWN0aW9uMvABCgtDb25uU2VydmljZRJKCgtTZW5kUmVxdWVzdBIaLnVzZXJDb25uUmVxLlNlbmRDb25lY3Rpb24aHy51c2VyQ29ublJlcS5Db25uZWN0aW9uUmVzcG9uc2USUAoMVXBkYXRlU3RhdHVzEh8udXNlckNvbm5SZXEuU2VuZFN0YXR1c1RvVXBkYXRlGh8udXNlckNvbm5SZXEuQ29ubmVjdGlvblJlc3BvbnNlEkMKE0FjY2VwdGVkQ29ubmVjdGlvbnMSEi51c2VyQ29ublJlcS5FbXB0eRoYLnVzZXJDb25uUmVxLkNvbm5lY3Rpb25zYgZwcm90bzM");
+
+/**
+ * Describes the message userConnReq.Empty.
+ * Use `create(EmptySchema)` to create a new message.
+ */
+export const EmptySchema = /*@__PURE__*/
+  messageDesc(file_user_con_req, 0);
+
+/**
+ * Describes the message userConnReq.Connection.
+ * Use `create(ConnectionSchema)` to create a new message.
+ */
+export const ConnectionSchema = /*@__PURE__*/
+  messageDesc(file_user_con_req, 1);
 
 /**
  * Describes the message userConnReq.SendConection.
  * Use `create(SendConectionSchema)` to create a new message.
  */
 export const SendConectionSchema = /*@__PURE__*/
-  messageDesc(file_user_con_req, 0);
+  messageDesc(file_user_con_req, 2);
 
 /**
  * Describes the message userConnReq.SendStatusToUpdate.
  * Use `create(SendStatusToUpdateSchema)` to create a new message.
  */
 export const SendStatusToUpdateSchema = /*@__PURE__*/
-  messageDesc(file_user_con_req, 1);
+  messageDesc(file_user_con_req, 3);
 
 /**
  * Describes the message userConnReq.ConnectionResponse.
  * Use `create(ConnectionResponseSchema)` to create a new message.
  */
 export const ConnectionResponseSchema = /*@__PURE__*/
-  messageDesc(file_user_con_req, 2);
+  messageDesc(file_user_con_req, 4);
+
+/**
+ * Describes the message userConnReq.Connections.
+ * Use `create(ConnectionsSchema)` to create a new message.
+ */
+export const ConnectionsSchema = /*@__PURE__*/
+  messageDesc(file_user_con_req, 5);
 
 /**
  * @generated from service userConnReq.ConnService

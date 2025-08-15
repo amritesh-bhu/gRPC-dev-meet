@@ -11,6 +11,44 @@ import type { Message } from "@bufbuild/protobuf";
 export declare const file_user_con_req: GenFile;
 
 /**
+ * @generated from message userConnReq.Empty
+ */
+export declare type Empty = Message<"userConnReq.Empty"> & {
+};
+
+/**
+ * Describes the message userConnReq.Empty.
+ * Use `create(EmptySchema)` to create a new message.
+ */
+export declare const EmptySchema: GenMessage<Empty>;
+
+/**
+ * @generated from message userConnReq.Connection
+ */
+export declare type Connection = Message<"userConnReq.Connection"> & {
+  /**
+   * @generated from field: string firstName = 1;
+   */
+  firstName: string;
+
+  /**
+   * @generated from field: string lastName = 2;
+   */
+  lastName: string;
+
+  /**
+   * @generated from field: string emailId = 3;
+   */
+  emailId: string;
+};
+
+/**
+ * Describes the message userConnReq.Connection.
+ * Use `create(ConnectionSchema)` to create a new message.
+ */
+export declare const ConnectionSchema: GenMessage<Connection>;
+
+/**
  * @generated from message userConnReq.SendConection
  */
 export declare type SendConection = Message<"userConnReq.SendConection"> & {
@@ -69,6 +107,22 @@ export declare type ConnectionResponse = Message<"userConnReq.ConnectionResponse
 export declare const ConnectionResponseSchema: GenMessage<ConnectionResponse>;
 
 /**
+ * @generated from message userConnReq.Connections
+ */
+export declare type Connections = Message<"userConnReq.Connections"> & {
+  /**
+   * @generated from field: repeated userConnReq.Connection conn = 1;
+   */
+  conn: Connection[];
+};
+
+/**
+ * Describes the message userConnReq.Connections.
+ * Use `create(ConnectionsSchema)` to create a new message.
+ */
+export declare const ConnectionsSchema: GenMessage<Connections>;
+
+/**
  * @generated from service userConnReq.ConnService
  */
 export declare const ConnService: GenService<{
@@ -87,6 +141,14 @@ export declare const ConnService: GenService<{
     methodKind: "unary";
     input: typeof SendStatusToUpdateSchema;
     output: typeof ConnectionResponseSchema;
+  },
+  /**
+   * @generated from rpc userConnReq.ConnService.AcceptedConnections
+   */
+  acceptedConnections: {
+    methodKind: "unary";
+    input: typeof EmptySchema;
+    output: typeof ConnectionsSchema;
   },
 }>;
 
