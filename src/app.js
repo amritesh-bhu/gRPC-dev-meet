@@ -31,13 +31,12 @@ server.addService(proto.profile.ProfileService.service, {
     ViewProfile: withAuth(rpcProfile.viewProfile),
     UpdateProfile: withAuth(rpcProfile.updateUserProfile)
 })
-
+    
 server.addService(proto.userConnReq.ConnService.service, {
     SendRequest: withAuth(rpcConnection.sendConnRequest),
-    UpdateStatus: withAuth(rpcConnection.updateStatus)
+    UpdateStatus: withAuth(rpcConnection.updateStatus),
+    AcceptedConnections: withAuth(rpcConnection.acceptedConnections)
 })
-
-
 
 server.bindAsync(`0.0.0.0:${HTTP_PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {
     if (err) {
